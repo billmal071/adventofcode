@@ -1,6 +1,7 @@
 use regex::{Captures, Regex};
 use std::collections::HashMap;
-use std::fs;
+use std::path::Path;
+use std::{env, fs};
 
 pub fn trebuchet() -> i32 {
     let map_of_string_nums = HashMap::from([
@@ -26,7 +27,10 @@ pub fn trebuchet() -> i32 {
     )
     .unwrap();
     // println!("{:?}", regex);
-    for line in fs::read_to_string("src/day1.txt").unwrap().lines() {
+    let curr_dir = env::current_dir().unwrap();
+    let file_path = curr_dir.join("y2023/day1/day1.txt");
+    // let path = Path::new("./day1.txt");
+    for line in fs::read_to_string(file_path).unwrap().lines() {
         // strip to get numbers and words matching the key in the hashmap
         let result = regex.replace_all(line, |caps: &Captures| {
             map_of_string_nums

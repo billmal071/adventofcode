@@ -1,7 +1,10 @@
-mod day1;
-mod day1_part2;
+// use crate::y2023::day1::day1::trebuchet;
+
+use crate::y2023::day1::day1_part2::trebuchet;
+
+mod y2023;
 
 fn main() {
-    // day1::trebuchet();
-    day1_part2::trebuchet();
+    // trebuchet();
+    trebuchet();
 }
