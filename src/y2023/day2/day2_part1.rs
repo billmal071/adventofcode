@@ -12,8 +12,6 @@ pub fn cube_conundrum() {
   // read the file
   for line in binding.lines()
   {
-    let split: Vec<_> = regex.captures_iter(line).collect();
-    // println!("{:?}", split);
     let game = line.split(':').collect::<Vec<&str>>();
     let number = game[0].split(" ").collect::<Vec<&str>>();
     println!("The number from game {}, original vector {:?}", number[1], game);
