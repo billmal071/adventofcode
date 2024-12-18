@@ -1,3 +1,5 @@
+use std::{fs::File, io::Write};
+
 pub struct LogQuery<'a> {
   logs: &'a Vec<String>,
 }
@@ -16,8 +18,13 @@ impl<'a> LogQuery<'a> {
     self.logs.iter().filter(|log| log.contains(keyword)).collect::<Vec<_>>() 
   }
 
-  // pub fn export_to_file(&self, keyword: &str, path: &str) -> std::io::Result<()> {
-  //   // 🎁 Your code here! 🎁
-
-  // }
+  pub fn export_to_file(&self, keyword: &str, path: &str) -> std::io::Result<()> {
+    // 🎁 Your code here! 🎁
+    let logs = self.search(keyword);
+    let mut file = File::create(path)?;
+    for log in logs {
+      writeln!(file, "{}", log)?;
+    }
+    Ok(())
+  }
 }

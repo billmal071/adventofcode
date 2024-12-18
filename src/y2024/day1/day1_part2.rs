@@ -35,7 +35,7 @@ pub fn similarity_score() -> u32 {
      // Build a frequency map for `second_part` to speed up lookups
      let mut second_part_map = HashMap::new();
      for &value in &second_part {
-         *second_part_map.entry(value).or_insert(0) += 1;
+         second_part_map.entry(value).and_modify(|c| { *c += 1 }).or_insert(1);
      }
  
      // Calculate the similarity score
@@ -46,5 +46,6 @@ pub fn similarity_score() -> u32 {
          })
          .sum();
  
+     println!("{}", result);
      result
 }
