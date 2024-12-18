@@ -40,7 +40,7 @@ impl Location {
         // }
         match self.area {
           0.0 => 0.0,
-          x => x,
+          x => *self.snow as f64 * x,
         }
     }
 }
